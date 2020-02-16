@@ -1,0 +1,17 @@
+:root {
+
+    --primary-color: #F08237;
+    --secondary-color: #FFFFFF;
+    --accent-color: #000000;
+    --off-white: #FAFAFA;
+
+    --background: var(--off-white);
+    --text-color: var(--accent-color);
+
+    --top-row-height: 40px;
+    --content-width: 960px;
+
+    --border-radius: 4px;
+
+    --transition-speed: 250ms;
+}

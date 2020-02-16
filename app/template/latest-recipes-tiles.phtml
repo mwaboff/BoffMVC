@@ -1,0 +1,16 @@
+<?php
+
+if(isset($RENDER_VARS["latest_recipes"])) {
+    foreach ($RENDER_VARS["latest_recipes"] as $recipe) {
+?>
+
+<div class="recipe-tile">
+    <div class="recipe-tile-title"><?= isset($recipe["recipe_name"]) ? $recipe["recipe_name"]: ""; ?></div>
+    <div class="recipe-tile-description"><?= isset($recipe["description"]) ? $recipe["description"] : ""; ?></div>
+</div>
+
+
+<?php
+    }
+}
+?>

@@ -1,0 +1,13 @@
+.recipe-tile {
+    border: 1px black solid;
+    padding: 10px;
+    margin: 10px 0px;
+}
+
+.recipe-tile-title {
+    font-weight: bold;
+}
+
+.recipe-tile-description {
+    font-size: 13pt;
+}

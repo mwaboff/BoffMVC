@@ -1,0 +1,30 @@
+<html>
+<head>
+<?php
+$addtl_title = "";
+if(isset($RENDER_VARS) && isset($RENDER_VARS["title"])) {
+    $addtl_title .= " - " . $RENDER_VARS["title"];
+}
+?>
+<title>Boff's Better Baking Bureau <?= $addtl_title ?></title>
+
+<link rel="stylesheet" href="app/view/Application/css/style.css">
+<link rel="stylesheet" href="app/view/Navbar/css/navbar.css">
+
+<?php
+if (isset($RENDER_VARS)) {
+    if (isset($RENDER_VARS["css"])) {
+        insertCSSFilesFromArray($RENDER_VARS["css"]);
+    }
+
+    if (isset($RENDER_VARS["js"])) {
+        insertJSFilesFromArray($RENDER_VARS["js"]);
+    }
+}
+?>
+
+</head>
+
+<body>
+
+<div class="main">

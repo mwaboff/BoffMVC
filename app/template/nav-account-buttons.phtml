@@ -1,0 +1,19 @@
+<?php
+if (!isset($_SESSION["id"])) {
+?>
+
+<a href="?page=login" id="navbar-login-button" class="nav-item"><span class="nav-item-link">Login / Join Us!</span></a>
+
+<?php
+} else {
+    $name = $_SESSION["username"];
+    $id = $_SESSION["id"];
+?>
+
+<!-- <a href="?page=recipe" id="navbar-recipe-button" class="nav-item"><span class="nav-item-link">Create Recipe</span></a> -->
+<a href="?page=user&uid=<?= $id ?>" id="navbar-acct-button" class="nav-item"><span class="nav-item-link"><?= $name ?></span></a>
+<a href="?page=logout" id="navbar-logout-button" class="nav-item"><span class="nav-item-link">Logout</span></a>
+
+<?php
+}
+?>

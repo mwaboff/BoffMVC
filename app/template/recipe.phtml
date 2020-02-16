@@ -1,0 +1,11 @@
+<?php include("header.phtml") ?>
+<?php include("navbar.phtml") ?>
+<div class="content">
+
+<div class="recipe-title"><?= isset($RENDER_VARS["recipe-name"]) ? $RENDER_VARS["recipe-name"] : ""; ?></div>
+<div class="recipe-description"><?= isset($RENDER_VARS["recipe-description"]) ? $RENDER_VARS["recipe-description"] : ""; ?></div>
+<div class="recipe-ingredients"><?= isset($RENDER_VARS["recipe-ingredients"]) ? $RENDER_VARS["recipe-ingredients"] : ""; ?></div>
+<div class="recipe-instructions"><?= isset($RENDER_VARS["recipe-instructions"]) ? $RENDER_VARS["recipe-instructions"] : ""; ?></div>
+
+</div>
+<?php include("footer.phtml") ?>
