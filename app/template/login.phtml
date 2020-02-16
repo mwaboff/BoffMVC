@@ -9,7 +9,7 @@
     </div>
 
     <div class="login-body">
-        <form class="login-form" id="login-form" method="POST" action="index.php?page=login">
+        <form class="login-form" id="login-form" method="POST" action="?page=login">
             
             <div id="login-error"><?= isset($RENDER_VARS["err_msg"]) ? $RENDER_VARS["err_msg"] : ""; ?></div>
             
@@ -41,11 +41,11 @@
 
             <div class="login-register-button-group">
                 <div class="main-button-group">
-                    <button class="login-form-main-button" id="login-button" type="submit">Login</button>
-                    <button class="login-form-button" id="guest-button">Guest</button>
+                    <button class="recipe-button primary-button" id="login-button" type="submit">Login</button>
+                    <button class="recipe-button secondary-button" id="guest-button">Guest</button>
                 </div>
                 <div class="alt-button-group">
-                    <button class="login-form-button" id="register-button">Register</button>
+                    <button class="recipe-button secondary-button" id="register-button">Register</button>
                 </div>
             </div>
         </form>

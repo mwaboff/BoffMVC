@@ -6,9 +6,6 @@ require_once("app/model/Recipe/RecipeManager.php");
 $RENDER_VARS["css"] = ["app/view/Recipe/css/recipe.css"];
 $RENDER_VARS["js"] = ["app/view/Recipe/js/recipe.js"];
 
-$recipe = RecipeManager::getRecipeById($_GET["id"]);
+require("app/template/recipe-create.phtml");
 
-$RENDER_VARS = array_merge($RENDER_VARS, $recipe->getRenderInformation());
-
-require("app/template/recipe.phtml");
 ?>

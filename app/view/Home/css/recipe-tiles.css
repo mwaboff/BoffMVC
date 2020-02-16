@@ -1,13 +1,22 @@
+.recipe-tile-link {
+    text-decoration: none;
+}
+
 .recipe-tile {
     border: 1px black solid;
+    background: var(--secondary-color);
     padding: 10px;
     margin: 10px 0px;
 }
 
 .recipe-tile-title {
+    text-decoration: none;
+    color: var(--accent-color);
     font-weight: bold;
 }
 
 .recipe-tile-description {
+    text-decoration: none !important;
+    color: var(--accent-color);
     font-size: 13pt;
 }
