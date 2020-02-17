@@ -1,4 +1,8 @@
 <h3>Latest Recipes</h3>
 <div class="recipe-container" id="latest-recipes-list">
-    <?php include("latest-recipes-tiles.phtml"); ?>
+    <?php 
+    if(isset($RENDER_VARS["latest_recipes"])) {
+        $RENDER_VARS["recipes"] = $RENDER_VARS["latest_recipes"];
+        include("recipe-tiles.phtml");
+     } ?>
 </div>

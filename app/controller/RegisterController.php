@@ -21,11 +21,13 @@ class RegisterController extends ApplicationController {
     }
 
     private static function isCreateRequest() {
-        return isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password"]);
+        return isset($_POST["username"]) &&
+            isset($_POST["email"]) && 
+            isset($_POST["password"]);
     }
 
     private static function processNewUserResponse($user_info) {
-        if(!empty($user_info)) {
+        if (!empty($user_info)) {
             static::processCreationSuccess($user_info);
         }
     }

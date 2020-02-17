@@ -27,10 +27,28 @@ class RecipeController extends ApplicationController {
         }
     }
 
-    
-
     static function create() {
-        
+        if (static::isCreateRequest()) {
+            $name = $_POST["recipe-name"];
+            $desc = $_POST["recipe-description"];
+            $ingredients = $_POST["recipe-ingredients"];
+            $instructions = $_POST["recipe-instructions"];
+            $recipe_info = RecipeManager::registerNewRecipe($name, $desc, $ingredients, $instructions);
+            static::processNewRecipeResponse($recipe_info);
+        }
+    }
+
+    static function isCreateRequest() {
+        return isset($_POST["recipe-name"]) && 
+            isset($_POST["recipe-description"]) &&
+            isset($_POST["recipe-ingredients"]) &&
+            isset($_POST["recipe-instructions"]); 
+    }
+
+    static function processNewRecipeResponse($recipe_info) {
+        if (!empty($recipe_info)) {
+            header("Location: ?page=recipe&id=" . $recipe_info["id"]);
+        }
     }
 
     static function post() {}

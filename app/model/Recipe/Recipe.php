@@ -16,7 +16,8 @@ class Recipe {
 
     static function createNewRecipe($name, $author_id, $description, $ingredients, $instructions) {
         $isValidParams = !empty($name) && !empty($description) && !empty($ingredients) && !empty($instructions);
-        return ($isValidParams ? new Recipe($name, $author_id, $description, $ingredients, $instructions) : null);
+        return ($isValidParams ? 
+            new Recipe($name, $author_id, $description, $ingredients, $instructions) : null);
     }
 
     function commit() {
@@ -52,6 +53,10 @@ class Recipe {
             "ingredients" => $this->ingredients,
             "instructions" => $this->instructions
         ];
+    }
+
+    function getId() {
+        return $this->id;
     }
 
 }

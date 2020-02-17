@@ -1,6 +1,8 @@
 <?php
 
 require_once("UserManager.php");
+require_once("app/model/Recipe/RecipeManager.php");
+
 
 class User {
 
@@ -92,6 +94,10 @@ class User {
 
     function getUsername() {
         return $this->user;
+    }
+
+    function getMyRecipes() {
+        return RecipeManager::getAllRecipesForAuthor($this->id);
     }
 }
 

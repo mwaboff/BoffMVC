@@ -1,7 +1,7 @@
 <?php
 
-if(isset($RENDER_VARS["latest_recipes"])) {
-    foreach ($RENDER_VARS["latest_recipes"] as $recipe) {
+if(isset($RENDER_VARS["recipes"])) {
+    foreach ($RENDER_VARS["recipes"] as $recipe) {
 ?>
 
 <a href="?page=recipe&id=<?=$recipe['id']?>" class="recipe-tile-link">

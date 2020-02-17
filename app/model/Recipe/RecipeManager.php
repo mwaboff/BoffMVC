@@ -6,7 +6,8 @@ require_once("Recipe.php");
 class RecipeManager {
 
     static function isValidRecipeId($recipe_id) {
-        return isPositiveInteger($recipe_id) && !empty(static::getRecipeById($recipe_id));
+        return isPositiveInteger($recipe_id) && 
+            !empty(static::getRecipeById($recipe_id));
     }
 
     static function getRecipeById($id) {
@@ -15,7 +16,7 @@ class RecipeManager {
         $query_result = DBManager::singleQuery($sql, ["id" => $id]);
         $result_array = $query_result["results"];
         if(!empty($result_array)) {
-            $result = static::createSingleRecipeFromQuery($result_array[0]);;
+            $result = static::createSingleRecipeFromQuery($result_array[0]);
         }
         return  $result;
     }
@@ -28,18 +29,18 @@ class RecipeManager {
         $ingredients = $result["ingredients"];
         $instructions = $result["instructions"];
 
-        return new Recipe($recipe_name, $author_id, $description, $ingredients, $instructions, $id);
+        return new Recipe($recipe_name, $author_id, $description, 
+            $ingredients, $instructions, $id);
     }
 
-    static function registerNewUser($username, $password, $email) {
+    static function registerNewRecipe($name, $description, $ingredients, $instructions) {
         $result = [];
-        $new_user = User::createNewUser($username, $password, $email);
-        if($new_user) {
-            $new_user->commit();
-            $committed_user = static::getUserByUsername($username);
+        $author_id = $_SESSION["id"];
+        $new_recipe = Recipe::createNewRecipe($name, $author_id, $description, $ingredients, $instructions);
+        if($new_recipe) {
+            $new_recipe->commit();
             $result = [
-                "id" => $committed_user->getId(),
-                "username" => $committed_user->getUsername()
+                "id" => $new_recipe->getId(),
             ];
         }
         return $result;
@@ -48,15 +49,20 @@ class RecipeManager {
     static function getAllRecipesByAge() {
         $sql = "SELECT * FROM recipes ORDER BY create_date";
         $query_result = DBManager::singleQuery($sql);
-        $results = $query_result["results"];
         return static::createMultipleRecipesFromQuery($query_result["results"]); 
+    }
+
+    static function getAllRecipesForAuthor($author_id) {
+        $sql = "SELECT * FROM recipes WHERE author_id = :author_id";
+        $query_result = DBManager::singleQuery($sql, ["author_id"=>$author_id]);
+        return static::createMultipleRecipesFromQuery($query_result["results"]);
     }
 
     static function createMultipleRecipesFromQuery($result_set) {
         $recipes = [];
         foreach ($result_set as $result) {
-            $new_user = static::createSingleRecipeFromQuery($result);
-            array_push($recipes, $new_user);
+            $new_recipe = static::createSingleRecipeFromQuery($result);
+            array_push($recipes, $new_recipe);
         }
         return $recipes;
     }

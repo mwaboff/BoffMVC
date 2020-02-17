@@ -16,7 +16,7 @@ class HomeView {
 }
 
 $RENDER_VARS["latest_recipes"] = HomeView::getLatestRecipes();
-$RENDER_VARS["css"] = ["app/view/Home/css/recipe-tiles.css"];
+$RENDER_VARS["css"] = ["app/view/Application/css/recipe-tiles.css"];
 
 require("app/template/home.phtml");
 
