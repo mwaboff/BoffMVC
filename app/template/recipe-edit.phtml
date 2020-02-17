@@ -1,11 +1,11 @@
 <?php include("header.phtml") ?>
 <?php include("navbar.phtml") ?>
 <div class="content">
-<div class="page-title">Build a Recipe</div>
+<div class="page-title">Edit Recipe</div>
 
-<form class="boff-bakery-form" action="?page=recipe&action=create" method="POST">
+<form class="boff-bakery-form" action="?page=recipe&action=update&id=<?= $RENDER_VARS['id'] ?>" method="POST">
     <?php require("forms/csrf.phtml") ?>
-    <?php require("forms/create.phtml") ?>
+    <?php require("forms/update.phtml") ?>
 
     <div class="form-section">
         <label class="form-label" for="recipe-name">Recipe Title</label>

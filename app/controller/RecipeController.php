@@ -7,7 +7,6 @@ class RecipeController extends ApplicationController {
 
     static function show() {
         global $RENDER_VARS;
-        // echo "<pre>";
         if (isset($_GET["id"]) && RecipeManager::isValidRecipeId($_GET["id"])) {
             require("app/view/Recipe/Recipe.php");
         } elseif (isset($_GET["action"])) {

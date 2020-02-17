@@ -9,10 +9,12 @@
     border: 1px solid var(--primary-color);
     box-shadow: 1px 1px 3px rgba(30, 30, 30, 0.5);
     cursor: pointer;
-}:focus {
-    outline: none !important;
-    border: 1px solid var(--primary-color) !important;
-    box-shadow: none !important;
+}
+
+.recipe-button:focus {
+    outline: none;
+    border: 1px solid var(--primary-color);
+    box-shadow: none;
 }
 
 .primary-button {
@@ -40,9 +42,11 @@
     font-size: 20pt;
     width: 100%;
     border: 1px solid rgb(199, 199, 199);
-}:focus {
+}
+
+.form-input:focus {
     outline: none;
-    border: 1px solid var(--accent-color) !important;
+    border: 1px solid var(--primary-color) !important;
 }
 
 .smaller-input-text {

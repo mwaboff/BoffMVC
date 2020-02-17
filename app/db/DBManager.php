@@ -78,6 +78,10 @@ class DBManager {
         }
         return $sql;
     }
+
+    static function replaceNewlinesWithBreaks($astring) {
+        return str_replace("\n", "<br>", $astring);
+    }
 }
 
 ?>

@@ -16,6 +16,8 @@ class Recipe {
 
     static function createNewRecipe($name, $author_id, $description, $ingredients, $instructions) {
         $isValidParams = !empty($name) && !empty($description) && !empty($ingredients) && !empty($instructions);
+        $ingredients = DBManager::replaceNewlinesWithBreaks($ingredients);
+        $instructions = DBManager::replaceNewlinesWithBreaks($instructions);
         return ($isValidParams ? 
             new Recipe($name, $author_id, $description, $ingredients, $instructions) : null);
     }

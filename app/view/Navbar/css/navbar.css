@@ -33,6 +33,10 @@
     color: var(--logo-color);
 }
 
+.header-logo:focus {
+    outline: none;
+}
+
 .nav-link-group {
     min-height: var(--top-row-height);
 
