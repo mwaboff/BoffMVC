@@ -1,3 +1,12 @@
+.recipe-tile-container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    /* justify-content: left; */
+
+}
+
+
 .recipe-tile-link {
     text-decoration: none;
 }
@@ -6,7 +15,9 @@
     border: 1px black solid;
     background: var(--secondary-color);
     padding: 10px;
-    margin: 10px 0px;
+    margin: 10px 20px 10px 0;
+    height: 200px;
+    width: 250px;
 }
 
 .recipe-tile-title {
@@ -16,7 +27,8 @@
 }
 
 .recipe-tile-description {
-    text-decoration: none !important;
+    text-decoration: none;
     color: var(--accent-color);
     font-size: 13pt;
+    padding-top: 10px;
 }

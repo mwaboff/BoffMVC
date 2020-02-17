@@ -3,9 +3,8 @@
     --primary-color: #F08237;
     --secondary-color: #FFFFFF;
     --accent-color: #000000;
-    --off-white: rgb(209, 209, 209);
+    --background: #F08237;
 
-    --background: var(--off-white);
     --text-color: var(--accent-color);
 
     --top-row-height: 40px;

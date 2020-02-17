@@ -10,12 +10,26 @@
 }
 
 .navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    max-height: var(--top-row-height);
     grid-row: 1;
     grid-column: 1 / -1;
-    background-color: var(--navbar-background);
-    padding: 10px;
+    background: rgba(255, 255, 255, 0.836);
+    backdrop-filter: blur(5px);
+    /* background-color: var(--navbar-background); */
 
-    border-bottom: var(--navbar-bottom-thickness) var(--navbar-bottom-color) solid;
+    /* border-bottom: var(--navbar-bottom-thickness) var(--navbar-bottom-color) solid; */
+}
+
+.navbar-default-background {
+    width: 100%;
+    max-height: var(--top-row-height);
+    grid-row 1;
+    grid-column: 1 / -1;
+    z-index: -5;
+    background: white;
 }
 
 .navbar-content {
