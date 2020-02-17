@@ -1,0 +1,35 @@
+.recipe-title {
+    font-size: 30pt;
+    padding: 10px 0px;
+    display: inline-block;
+}
+
+.author-link {
+    padding-left: 15px;
+    display: inline-block;
+    font-size: 12pt;
+}
+
+.author-link a {
+    text-decoration: none;
+}
+
+.recipe-description {
+    padding: 7px 0px;
+    font-size: 12pt;
+    font-style: italic;
+}
+
+.recipe-section {
+    padding: 25px 0px;
+}
+.recipe-section-title {
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+.recipe-ingredients {
+}
+
+.recipe-instructions {
+}

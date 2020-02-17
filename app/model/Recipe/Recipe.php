@@ -1,5 +1,6 @@
 <?php
 
+require_once("app/model/User/UserManager.php");
 
 class Recipe {
 
@@ -47,9 +48,11 @@ class Recipe {
     }
 
     function getRenderInformation() {
+        $author = UserManager::getUserById($this->author_id);
         return [
             "id" => $this->id,
             "recipe_name" => $this->recipe_name,
+            "author_name" => $author->getUsername(),
             "author_id" => $this->author_id,
             "description" => $this->description,
             "ingredients" => $this->ingredients,

@@ -47,7 +47,7 @@ class RecipeManager {
     }
 
     static function getAllRecipesByAge() {
-        $sql = "SELECT * FROM recipes ORDER BY create_date";
+        $sql = "SELECT * FROM recipes ORDER BY create_date desc";
         $query_result = DBManager::singleQuery($sql);
         return static::createMultipleRecipesFromQuery($query_result["results"]); 
     }
