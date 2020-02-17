@@ -6,7 +6,6 @@
     --login-body-background: var(--secondary-color);
 
     --login-container-height: 425px;
-    --login-container-width: 415px;
 }
 
 .login-outer-wrapper {
@@ -26,6 +25,7 @@
     margin: 0 auto;
     height: var(--login-container-height);
     box-shadow: 0 0 15px -3px var(--accent-color);
+    /* border: 1px var(--accent-color) solid; */
     display: flex;
     flex-direction: column;
 }
@@ -41,17 +41,20 @@
 }
 
 .login-body {
-    padding: 0px 15px;
     flex-grow: 1;
     background: var(--login-body-background);
     display: flex;
     align-items: center;
-    max-width: var(--login-container-width);
 }
+
 
 .login-form {
     padding: 15px;
     width: 100%;
+}
+
+.bad-login-field {
+    background: rgb(255, 151, 151);
 }
 
 .login-register-button-group {
@@ -62,6 +65,5 @@
 
 #login-error {
     color: red;
-    font-size: 12pt;
-    font-variant-caps: all-small-caps;
+    font-size: 10pt;
 }

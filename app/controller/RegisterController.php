@@ -14,9 +14,10 @@ class RegisterController extends ApplicationController {
             $username = Router::getRequestVar("username");
             $password = Router::getRequestVar("password");
             $email = Router::getRequestVar("email");
+            $user_info = UserManager::registerNewUser($username, $password, $email);
+            static::processNewUserResponse($user_info);
+        } else {
         }
-        $user_info = UserManager::registerNewUser($username, $password, $email);
-        static::processNewUserResponse($user_info);
     }
 
     private static function isCreateRequest() {

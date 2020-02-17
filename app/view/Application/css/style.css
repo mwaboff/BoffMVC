@@ -1,4 +1,5 @@
-@import "global-theme.css"; 
+@import "global-theme.css";
+@import "components.css";
 
 * {
     margin: 0;
@@ -31,31 +32,4 @@ body {
     margin: 0 auto;
     padding-top: 10px;
     padding-bottom: 10px;
-}
-
-.recipe-button {
-    margin-right: 5px;
-    height: 40px;
-    padding: 0 15px;
-    font-size: 10pt;
-    outline: none;
-    font-size: 12pt;
-    font-weight: 520;
-    border: 1px solid var(--primary-color);
-    box-shadow: 1px 1px 3px rgba(30, 30, 30, 0.5);
-    cursor: pointer;
-}:focus {
-    outline: none !important;
-    border: 1px solid var(--primary-color) !important;
-    box-shadow: none !important;
-}
-
-.primary-button {
-    background: var(--primary-color);
-    color: var(--secondary-color);
-}
-
-.secondary-button {
-    background: var(--login-body-background);
-    color: var(--primary-color);
 }

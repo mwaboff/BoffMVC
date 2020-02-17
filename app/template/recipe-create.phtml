@@ -3,35 +3,40 @@
 <div class="content">
 <div class="page-title">Build a Recipe</div>
 
-<div class="page-edit-body">
-    <form class="page-edit-form" action="?page=recipe&action=create">
+<form class="boff-bakery-form" action="?page=recipe&action=create">
+    <?php require("forms/csrf.phtml") ?>
+    <?php require("forms/create.phtml") ?>
 
-    <label for="recipe-name">Recipe Title</label>
-    <input type="text" name="recipe-name" class="create-field" id="recipe-name-field" />
-        <?= isset($RENDER_VARS["old-recipe-name"]) ? $RENDER_VARS["old-recipe-name"] : "" ?>
-    </input>
+    <div class="form-section">
+        <label class="form-label" for="recipe-name">Recipe Title</label>
+        <input type="text" name="recipe-name" class="form-input" id="recipe-name-field" autofocus/>
+            <?= isset($RENDER_VARS["old-recipe-name"]) ? $RENDER_VARS["old-recipe-name"] : "" ?>
+        </input>
+    </div>
 
-    <label for="recipe-description">Description</label>
-    <input type="text" name="recipe-description" class="create-field" id="recipe-description-field" />
-        <?= isset($RENDER_VARS["old-recipe-description"]) ? $RENDER_VARS["old-recipe-description"] : "" ?>
-    </input>
+    <div class="form-section">
+        <label class="form-label" for="recipe-description">Description</label>
+        <input type="text" name="recipe-description" class="form-input smaller-input-text" id="recipe-description-field" />
+            <?= isset($RENDER_VARS["old-recipe-description"]) ? $RENDER_VARS["old-recipe-description"] : "" ?>
+        </input>
+    </div>
 
-    <label for="recipe-ingredients">Ingredients</label>
-    <input type="text" name="recipe-ingredients" class="create-field" id="recipe-ingredients-field" />
-        <?= isset($RENDER_VARS["old-recipe-ingredients"]) ? $RENDER_VARS["old-recipe-ingredients"] : "" ?>
-    </input>
+    <div class="form-section">
+        <label class="form-label" for="recipe-ingredients">Ingredients</label>
+        <textarea type="textarea" name="recipe-ingredients" class="form-input large-input smaller-input-text" id="recipe-ingredients-field" /><?= isset($RENDER_VARS["old-recipe-ingredients"]) ? $RENDER_VARS["old-recipe-ingredients"] : "" ?></textarea>
+    </div>
 
-    <label for="recipe-instructions">Instructions</label>
-    <input type="text" name="recipe-instructions" class="create-field" id="recipe-instructions-field" />
-        <?= isset($RENDER_VARS["old-recipe-instructions"]) ? $RENDER_VARS["old-recipe-instructions"] : "" ?>
-    </input>
+    <div class="form-section">
+        <label class="form-label" for="recipe-instructions">Instructions</label>
+        <textarea type="textarea" 
+            name="recipe-instructions" 
+            class="form-input large-input smaller-input-text" 
+            id="recipe-instructions-field" /><?= isset($RENDER_VARS["old-recipe-instructions"]) ? $RENDER_VARS["old-recipe-instructions"] : "" ?></textarea>
+    </div>
 
     <button type="submit" class="recipe-button primary-button">Submit</button>
 
-
-
-    </form>
-</div>
+</form>
 
 
 </div>

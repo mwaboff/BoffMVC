@@ -27,8 +27,13 @@ class RecipeController extends ApplicationController {
         }
     }
 
+    
+
+    static function create() {
+        
+    }
+
     static function post() {}
-    static function create() {}
     static function destroy() {}
     static function update() {}
 }

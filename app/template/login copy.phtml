@@ -9,7 +9,7 @@
     </div>
 
     <div class="login-body">
-        <form class="boff-bakery-form" id="login-form" method="POST" action="?page=login">
+        <form class="login-form" id="login-form" method="POST" action="?page=login">
             
             <div id="login-error"><?= isset($RENDER_VARS["err_msg"]) ? $RENDER_VARS["err_msg"] : ""; ?></div>
             
@@ -17,7 +17,7 @@
             <?php require("forms/post.phtml") ?>
             
             <div class="form-section">
-                <label class="form-label" for="username">Username</label>
+                <label for="username">Username</label>
                 <input 
                     type="text" 
                     name="username" 
@@ -29,7 +29,7 @@
             </div>
 
             <div class="form-section">
-                <label class="form-label" for="password">Password</label>
+                <label for="password">Password</label>
                 <input 
                     type="password" 
                     name="password" 
