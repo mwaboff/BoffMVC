@@ -17,15 +17,39 @@ class Recipe {
 
     static function createNewRecipe($name, $author_id, $description, $ingredients, $instructions) {
         $isValidParams = !empty($name) && !empty($description) && !empty($ingredients) && !empty($instructions);
-        $ingredients = DBManager::replaceNewlinesWithBreaks($ingredients);
-        $instructions = DBManager::replaceNewlinesWithBreaks($instructions);
+        // $ingredients = DBManager::replaceNewlinesWithBreaks($ingredients);
+        // $instructions = DBManager::replaceNewlinesWithBreaks($instructions);
         return ($isValidParams ? 
             new Recipe($name, $author_id, $description, $ingredients, $instructions) : null);
     }
 
     function commit() {
+        if(empty($this->id)) {
+            $this->commitNew();
+        } else {
+            $this->commitUpdate();
+        }
+    }
+
+    function commitNew() {
+        $sql = DBManager::readSqlFile("app/db/sql/insert-recipe.sql");
+        $parameters = [
+            "recipe_name" => $this->recipe_name,
+            "author_id" => $this->author_id,
+            "description" => $this->description,
+            "ingredients" => $this->ingredients,
+            "instructions" => $this->instructions
+        ];
+
+        $result = DBManager::singleQuery($sql, $parameters);
+        $this->id = $result["lastInsertId"];
+        return true;
+    }
+        
+    function commitUpdate() {
         $sql = DBManager::readSqlFile("app/db/sql/update-recipe.sql");
         $parameters = [
+            "id" => $this->id,
             "recipe_name" => $this->recipe_name,
             "author_id" => $this->author_id,
             "description" => $this->description,
@@ -55,13 +79,54 @@ class Recipe {
             "author_name" => $author->getUsername(),
             "author_id" => $this->author_id,
             "description" => $this->description,
-            "ingredients" => $this->ingredients,
-            "instructions" => $this->instructions
+            "ingredients" => DBManager::replaceNewlinesWithBreaks($this->ingredients),
+            "instructions" => DBManager::replaceNewlinesWithBreaks($this->instructions)
         ];
     }
 
     function getId() {
         return $this->id;
+    }
+
+    function getAuthorId() {
+        return $this->author_id;
+    }
+
+    function getName() {
+        return $this->recipe_name;
+    }
+
+    function getDescription() {
+        return $this->description;
+    }
+
+    function getIngredients() {
+        // return DBManager::replaceBreaksWithNewlines($this->ingredients);
+        return $this->ingredients;
+    }
+
+    function getInstructions() {
+        // return DBManager::replaceBreaksWithNewlines($this->instructions);
+        return $this->instructions;
+    }
+
+    function setName($new_name) {
+        print("Setting name");
+        $this->recipe_name = $new_name;
+    }
+
+    function setDescription($new_desc) {
+        $this->description = $new_desc;
+    }
+
+    function setIngredients($new_ingredients) {
+        // $this->ingredients = DBManager::replaceNewlinesWithBreaks($new_ingredients);
+        $this->ingredients = $new_ingredients;
+    }
+
+    function setInstructions($new_instructions) {
+        $this->instructions = $new_instructions;
+        // $this->instructions = DBManager::replaceNewlinesWithBreaks($new_instructions);
     }
 
 }

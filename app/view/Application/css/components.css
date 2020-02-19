@@ -27,6 +27,12 @@
     color: var(--primary-color);
 }
 
+.warning-button {
+    background: red !important;
+    color: white;
+    border: 1px solid red;
+}
+
 .form-section {
     margin: 10px 0px;
 }

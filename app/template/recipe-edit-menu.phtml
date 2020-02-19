@@ -1,0 +1,10 @@
+<?php
+
+if ($RENDER_VARS["editor_status"]) {
+?>
+
+<a href="?page=recipe&id=<?= isset($RENDER_VARS["id"]) ? $RENDER_VARS["id"] : "" ?>&action=edit">Edit</a>
+
+<?php
+}
+?>

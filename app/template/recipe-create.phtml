@@ -9,16 +9,12 @@
 
     <div class="form-section">
         <label class="form-label" for="recipe-name">Recipe Title</label>
-        <input type="text" name="recipe-name" class="form-input" id="recipe-name-field" autofocus/>
-            <?= isset($RENDER_VARS["old-recipe-name"]) ? $RENDER_VARS["old-recipe-name"] : "" ?>
-        </input>
+        <input type="text" name="recipe-name" class="form-input" id="recipe-name-field" autofocus value="<?= isset($RENDER_VARS["old-recipe-name"]) ? $RENDER_VARS["old-recipe-name"] : "" ?>">
     </div>
 
     <div class="form-section">
         <label class="form-label" for="recipe-description">Description</label>
-        <input type="text" name="recipe-description" class="form-input smaller-input-text" id="recipe-description-field" />
-            <?= isset($RENDER_VARS["old-recipe-description"]) ? $RENDER_VARS["old-recipe-description"] : "" ?>
-        </input>
+        <input type="text" name="recipe-description" class="form-input smaller-input-text" id="recipe-description-field" value="<?= isset($RENDER_VARS["old-recipe-description"]) ? $RENDER_VARS["old-recipe-description"] : "" ?>">
     </div>
 
     <div class="form-section">
@@ -34,10 +30,9 @@
             id="recipe-instructions-field" /><?= isset($RENDER_VARS["old-recipe-instructions"]) ? $RENDER_VARS["old-recipe-instructions"] : "" ?></textarea>
     </div>
 
-    <button type="submit" class="recipe-button primary-button">Submit</button>
+    <button type="submit" class="recipe-button primary-button">Create</button>
 
 </form>
-
 
 </div>
 <?php include("footer.phtml") ?>

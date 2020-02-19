@@ -7,23 +7,35 @@ class RecipeController extends ApplicationController {
 
     static function show() {
         global $RENDER_VARS;
-        if (isset($_GET["id"]) && RecipeManager::isValidRecipeId($_GET["id"])) {
-            require("app/view/Recipe/Recipe.php");
-        } elseif (isset($_GET["action"])) {
-            static::routeAction();
-        } else {
+        if (static::isValidRecipeIdRequest()) {
+            if (isset($_GET["action"]) && $_GET["action"] == "edit") {
+                require("app/view/Recipe/RecipeEdit.php");
+            } elseif (isset($_GET["action"]) && $_GET["action"] == "delete") {
+                static::destroy();
+            } else {
+                require("app/view/Recipe/Recipe.php");
+            }
+            
+        } elseif (isset($_GET["action"]) && $_GET["action"] == "create") {
+            require("app/view/Recipe/RecipeCreate.php");
+        }  else {
             require(CONFIG["404_page"]);
         }
     }
 
-    static function routeAction() {
-        if ($_GET["action"] == "create") {
-            require("app/view/Recipe/RecipeCreate.php");
-        } elseif ($_GET["action"] == "edit") {
-            require("app/view/Recipe/RecipeEdit.php");
+    static function isValidRecipeIdRequest() {
+        return isset($_REQUEST["id"]) && RecipeManager::isValidRecipeId($_REQUEST["id"]);
+    }
+
+    static function destroy() {
+        $recipe = RecipeManager::getRecipeById($_REQUEST["id"]);
+        if (RecipeManager::isValidRecipeEditor($recipe, $_SESSION["id"])) {
+            RecipeManager::deleteRecipe($recipe);
+            header("Location: ?page=home");
         } else {
-            require(CONFIG["404_page"]);
+            print("You are not a valid editor for this page.");
         }
+
     }
 
     static function create() {
@@ -51,8 +63,33 @@ class RecipeController extends ApplicationController {
     }
 
     static function post() {}
-    static function destroy() {}
-    static function update() {}
+
+    
+
+    static function update() {
+        if (static::isValidRecipeIdRequest() && isset($_REQUEST["action"]) && $_REQUEST["action"] == "edit") {
+            if (static::isCreateRequest()) {
+                static::processUpdate();
+                header("Location: ?page=recipe&id=" . $_REQUEST["id"]);
+            }
+        }
+    }
+
+    static function processUpdate() {
+        if (!static::isValidRecipeIdRequest()) {
+            header("Location: ?page=home");
+        }
+        $recipe = RecipeManager::getRecipeById($_REQUEST["id"]);
+        if (RecipeManager::isValidRecipeEditor($recipe, $_SESSION["id"])) {
+            $recipe->setName($_POST["recipe-name"]);
+            $recipe->setDescription($_POST["recipe-description"]);
+            $recipe->setIngredients($_POST["recipe-ingredients"]);
+            $recipe->setInstructions($_POST["recipe-instructions"]);
+            $recipe->commit();
+        } else {
+            print("You are not a valid editor for this page.");
+        }
+    }
 }
 
 RecipeController::manageRequest();

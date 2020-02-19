@@ -2,22 +2,29 @@
     display: flex;
     width: 100%;
     flex-wrap: wrap;
-    /* justify-content: left; */
+    justify-content: left;
 
 }
 
-
 .recipe-tile-link {
     text-decoration: none;
+    margin: 10px 20px 10px 0;  
 }
 
 .recipe-tile {
     border: 1px black solid;
     background: var(--secondary-color);
     padding: 10px;
-    margin: 10px 20px 10px 0;
+    color: var(--accent-color);
+    box-shadow: 1px 1px 7px -1px var(--accent-color);
+    
     height: 200px;
     width: 250px;
+}
+
+.recipe-tile:hover {
+    background: var(--primary-color);
+    transition: var(--transition-speed);
 }
 
 .recipe-tile-title {
@@ -27,7 +34,7 @@
 }
 
 .recipe-tile-description {
-    text-decoration: none;
+    /* text-decoration: none; */
     color: var(--accent-color);
     font-size: 13pt;
     padding-top: 10px;

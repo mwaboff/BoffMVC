@@ -1,3 +1,0 @@
-.recipe-title {
-    font-siz`
-}

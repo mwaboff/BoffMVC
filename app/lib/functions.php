@@ -17,4 +17,5 @@ function insertJSFilesFromArray($js_array) {
 function isPositiveInteger($int_string) {
     return ((int)$int_string && $int_string > 0) ? true : false;
 }
+
 ?>

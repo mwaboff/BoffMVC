@@ -52,8 +52,10 @@ class BoffForm {
     }
 
     overrideFormSubmit() {
+        console.log("on form submit button");
         event.preventDefault();
         if (this.isValidForm()) {
+            console.log("attempting to submit form");
             event.target.submit();
         }
     }
