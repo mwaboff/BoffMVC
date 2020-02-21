@@ -10,7 +10,6 @@ $RENDER_VARS["js"] = ["app/view/Recipe/js/recipe-edit.js", "app/view/Application
 
 $recipe = RecipeManager::getRecipeById($_GET["id"]);
 
-
 if (RecipeManager::isValidRecipeEditor($recipe, $_SESSION["id"])) {
     $RENDER_VARS["old-recipe-name"] = $recipe->getName();
     $RENDER_VARS["old-recipe-description"] = $recipe->getDescription();
@@ -23,6 +22,5 @@ if (RecipeManager::isValidRecipeEditor($recipe, $_SESSION["id"])) {
 } else {
     print("You do not have permission to edit this recipe");
 }
-
 
 ?>

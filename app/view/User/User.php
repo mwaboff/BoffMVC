@@ -14,6 +14,16 @@ class RecipeView {
 
 $user = UserManager::getUserById(Router::getRequestVar("uid"));
 $RENDER_VARS = array_merge($RENDER_VARS, $user->getRenderInformation());
+
+if (isset($_SESSION["id"])) {
+    $RENDER_VARS["editor_status"] = UserManager::isValidUserEditor($user, $_SESSION["id"]);
+    $RENDER_VARS["uid"] = $user->getId();
+} else {
+    $RENDER_VARS["editor_status"] = false;
+}
+
+
+
 $recipe_list = $user->getMyRecipes();
 $RENDER_VARS["my_recipes"] = RecipeView::getRecipeDescriptions($recipe_list);
 

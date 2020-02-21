@@ -88,12 +88,27 @@ class User {
     }
 
     function getId() {
-        print("IN getId, my current id = $this->id");
         return $this->id;
     }
 
     function getUsername() {
         return $this->user;
+    }
+
+    function getEmail() {
+        return $this->email;
+    }
+
+    function setUsername($new_name) {
+        $this->user = $new_name;
+    }
+
+    function setEmail($new_email) {
+        $this->email = $new_email;
+    }
+
+    function setPassword($new_password) {
+        $this->pass = password_hash($new_password, PASSWORD_BCRYPT);
     }
 
     function getMyRecipes() {

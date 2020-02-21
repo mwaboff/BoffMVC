@@ -57,4 +57,8 @@ class UserManager {
         }
         return $result;
     }
+
+    static function isValidUserEditor($user, $current_user_id) {
+        return $user->getId() == $current_user_id;
+    }
 }
