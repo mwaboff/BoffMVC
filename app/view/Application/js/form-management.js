@@ -1,3 +1,5 @@
+import {BoffFormPassword} from "./password-management.js";
+
 var BOFF_FORM_CLASS_ID = "boff-bakery-form";
 
 var BOFF_FORM_ERRORS = {
@@ -9,6 +11,9 @@ class BoffForm {
     constructor(form_dom_elem) {
         this.form = form_dom_elem;
         this.input_fields = [];
+        this.primary_password = null;
+        this.verification_password = null;
+        this.password = null;
         this.filterFields();
     }
 
@@ -28,6 +33,9 @@ class BoffForm {
             switch(this.form[i].tagName) {
                 case "INPUT":
                     this.input_fields.push(this.form[i]);
+                    if (this.form[i].type === "password") {
+                        this.filterPasswordFields(this.form[i]);
+                    }
                     break;
                 case "TEXTAREA":
                     this.input_fields.push(this.form[i]);
@@ -36,9 +44,18 @@ class BoffForm {
         }
     }
 
+    filterPasswordFields(password_dom) {
+        if (password_dom.classList.contains("primary-password")) {
+            this.primary_password = password_dom;
+        } else if (password_dom.classList.contains("secondary-password")) {
+            this.secondary_password = password_dom;
+        }
+    }
+
     initialize() {
         this.initializeForm();
         this.initializeInputs();
+        this.initializePassword();
     }
 
     initializeForm() {
@@ -51,11 +68,15 @@ class BoffForm {
         }
     }
 
+    initializePassword() {
+        if (this.primary_password != null) {
+            this.password = new BoffFormPassword(this.primary_password, this.secondary_password);
+        }
+    }
+
     overrideFormSubmit() {
-        console.log("on form submit button");
         event.preventDefault();
         if (this.isValidForm()) {
-            console.log("attempting to submit form");
             event.target.submit();
         }
     }
@@ -80,27 +101,18 @@ class BoffForm {
         let value = field_elem.value;
         let is_valid = true;
         let error_message = "";
-
-        if (field_elem.type == "password") {
-            is_valid = this.isValidPassword(value);
-            error_message = BOFF_FORM_ERRORS["password"];
-        } else if (value.length < 1) {
+        if (value.length < 1 && field_elem.dataset["required"] != "false") {
             is_valid = false;
             error_message = BOFF_FORM_ERRORS["required"];
+        } else if (field_elem.type == "password" && value.length >= 1 && this.password) {
+            let is_pass_valid = this.password.checkValidity();
+            is_valid = is_pass_valid["success"];
+            error_message = is_pass_valid["err_msg"];
         }
 
         if (!is_valid) this.setError(field_elem, error_message);
 
         return is_valid;
-    }
-
-    isValidPassword(value) {
-        // Min 8 characters, atleast one of: capital letter, lower case letter, number.
-        // Credit: modified from https://stackoverflow.com/a/21456918        
-        let med_strength = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)?.{8,}$/;
-        let result = value.match(med_strength);
-
-        return (result != null);
     }
 
     setError(field_elem, err_msg) {

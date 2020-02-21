@@ -1,5 +1,7 @@
 <?php
 
+$RENDER_VARS["js"] = ["app/view/Application/js/form-management.js"];
+
 $user = UserManager::getUserById($_GET["uid"]);
 
 if (UserManager::isValidUserEditor($user, $_SESSION["id"])) {

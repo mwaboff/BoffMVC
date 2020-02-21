@@ -14,7 +14,12 @@
 
     <div class="form-section">
         <label class="form-label" for="password">New Password</label>
-        <input type="text" name="password" class="form-input" id="password-field" autofocus value="<?= isset($RENDER_VARS["old-password"]) ? $RENDER_VARS["old-password"] : "" ?>">
+        <input type="password" name="password" class="form-input primary-password" id="password-field" data-required="false">
+    </div>
+
+    <div class="form-section">
+        <label class="form-label" for="password2">Verify New Password</label>
+        <input type="password" name="password2" class="form-input secondary-password" id="password2-field" data-required="false">
     </div>
 
     
