@@ -35,7 +35,7 @@ class RecipeController extends ApplicationController {
         } else {
             print("You are not a valid editor for this page.");
         }
-
+        
     }
 
     static function create() {
@@ -61,11 +61,7 @@ class RecipeController extends ApplicationController {
             header("Location: ?page=recipe&id=" . $recipe_info["id"]);
         }
     }
-
-    static function post() {}
-
     
-
     static function update() {
         if (static::isValidRecipeIdRequest() && isset($_REQUEST["action"]) && $_REQUEST["action"] == "edit") {
             if (static::isCreateRequest()) {
@@ -90,6 +86,9 @@ class RecipeController extends ApplicationController {
             print("You are not a valid editor for this page.");
         }
     }
+
+    static function post() {}
+
 }
 
 RecipeController::manageRequest();

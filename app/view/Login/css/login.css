@@ -25,7 +25,7 @@
     width: 100%;
     margin: 0 auto;
     height: var(--login-container-height);
-    box-shadow: 0 0 15px -3px var(--accent-color);
+    box-shadow: 0 0 15px -3px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
 }
