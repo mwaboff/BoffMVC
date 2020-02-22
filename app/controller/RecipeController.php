@@ -43,7 +43,7 @@ class RecipeController extends ApplicationController {
         if (static::isCreateRequest()) {
             // print("<pre>");
             print_r($_FILES);
-            $pic = new Picture($_FILES["recipe-picture"]);
+            $pic = new Image($_FILES["recipe-picture"]);
             print("<br>" . $pic->testValidity());
 
             // $name = $_POST["recipe-name"];

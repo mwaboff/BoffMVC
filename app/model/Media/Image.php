@@ -4,13 +4,13 @@ require_once("ImageManager.php");
 
 class Image {
 
-    function __construct($file) {
+    function __construct($image_resource) {
         $this->ALLOWED_PICTURE_TYPES = ["image/png", "image/jpg", "image/jpeg"];
         $this->ALLOWED_MAX_PICTURE_WIDTH = 10000; // px
         $this->ALLOWED_MAX_PICTURE_HEIGHT = 10000; // px
         $this->ALLOWED_MAX_PICTURE_SIZE = 2000000; // MB
 
-        $this->file = $file;
+        $this->file = $image_resource;
         $this->name = $this->getComponent("name");
         $this->tmp_name = $this->getComponent("tmp_name");
         $this->type = $this->getComponent("type");
@@ -27,7 +27,7 @@ class Image {
     }
 
     static function createFromString($data_string) {
-        
+
     }
 
 
@@ -46,6 +46,8 @@ class Image {
     }
 
     private function isValidType() {
+        print ("type=" . $this->type . "<br>");
+        print_r($this->ALLOWED_PICTURE_TYPES);
         return in_array($this->type, $this->ALLOWED_PICTURE_TYPES);
     }
 
