@@ -2,6 +2,7 @@
 
 require_once("app/model/Recipe/Recipe.php");
 require_once("app/model/Recipe/RecipeManager.php");
+require_once("app/model/Media/Image.php");
 
 class RecipeController extends ApplicationController {
 
@@ -40,12 +41,17 @@ class RecipeController extends ApplicationController {
 
     static function create() {
         if (static::isCreateRequest()) {
-            $name = $_POST["recipe-name"];
-            $desc = $_POST["recipe-description"];
-            $ingredients = $_POST["recipe-ingredients"];
-            $instructions = $_POST["recipe-instructions"];
-            $recipe_info = RecipeManager::registerNewRecipe($name, $desc, $ingredients, $instructions);
-            static::processNewRecipeResponse($recipe_info);
+            // print("<pre>");
+            print_r($_FILES);
+            $pic = new Picture($_FILES["recipe-picture"]);
+            print("<br>" . $pic->testValidity());
+
+            // $name = $_POST["recipe-name"];
+            // $desc = $_POST["recipe-description"];
+            // $ingredients = $_POST["recipe-ingredients"];
+            // $instructions = $_POST["recipe-instructions"];
+            // $recipe_info = RecipeManager::registerNewRecipe($name, $desc, $ingredients, $instructions);
+            // static::processNewRecipeResponse($recipe_info);
         }
     }
 
