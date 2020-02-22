@@ -7,7 +7,7 @@ class MediaController extends ApplicationController {
 
     static function show() {
         global $RENDER_VARS;
-        if(isset($_GET["id"]))
+        if(isset($_GET["id"])) {}
         require("app/view/Media/Image.php");
     }
 
