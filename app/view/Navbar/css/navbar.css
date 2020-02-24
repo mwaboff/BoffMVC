@@ -79,3 +79,37 @@
     transition-duration: var(--transition-speed);
  }
 
+
+
+ @media screen and (max-width: 1060px) {
+    :root {
+    }
+
+    .navbar {
+        padding-left: 5px;
+    }
+
+    .nav-link-group {
+
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    :root {
+        --content-width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    :root {
+        --logo-size: 15pt;
+        --navbar-menu-font-size: 10pt;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    :root {
+    }
+}
