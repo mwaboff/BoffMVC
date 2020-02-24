@@ -1,23 +1,34 @@
-.recipe-title {
-    font-size: 30pt;
+.title-section {
+    font-size: 30pt;    
+    display: flex;
+    flex-direction: row;
+}
+
+.title-name-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.recipe-edit {
+    margin: 0px 20px;
+}
+
+.recipe-description-section {
+    font-size: 12pt;
+    display: flex;
+    flex-direction: row;
     padding: 10px 0px;
-    display: inline-block;
+    font-style: italic;
 }
 
 .author-link {
-    padding-left: 15px;
-    display: inline-block;
     font-size: 12pt;
+    padding-left: 5px;
 }
-
 .author-link a {
     text-decoration: none;
-}
-
-.recipe-description {
-    padding: 7px 0px;
-    font-size: 12pt;
-    font-style: italic;
+    color: var(--primary-color);
 }
 
 .recipe-section {
@@ -26,10 +37,4 @@
 .recipe-section-title {
     font-weight: bold;
     font-size: 12pt;
-}
-
-.recipe-ingredients {
-}
-
-.recipe-instructions {
 }

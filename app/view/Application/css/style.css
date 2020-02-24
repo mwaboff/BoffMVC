@@ -22,17 +22,12 @@ body {
 
     display: flex;
     flex-direction: column;
-    /* grid-template-columns: auto var(--content-width) auto;
-    grid-template-rows: var(--top-row-height) 1fr var(--bottom-row-height) ; */
 }
 
 .content {
-    
-    /* grid-column: 2 / 3;
-    grid-row: 2; */
-    /* height: 100%; */
     width: var(--content-width);
     margin: 0 auto;
     background: white;
     padding: 30px 0px;
+    flex: 1;
 }

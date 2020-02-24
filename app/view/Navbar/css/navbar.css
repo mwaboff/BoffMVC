@@ -4,7 +4,10 @@
     --navbar-text-color: var(--accent-color);
     --navbar-hover-color: var(--primary-color);
     --navbar-background: var(--secondary-color);
+
     --logo-color: var(--primary-color);
+    --logo-size: 20pt;
+    --logo-weight: normal;
 
     --navbar-menu-font-size: 11pt;
 }
@@ -18,9 +21,6 @@
     grid-column: 1 / -1;
     background: rgba(255, 255, 255, 0.836);
     backdrop-filter: blur(5px);
-    /* background-color: var(--navbar-background); */
-
-    /* border-bottom: var(--navbar-bottom-thickness) var(--navbar-bottom-color) solid; */
 }
 
 .navbar-default-background {
@@ -28,7 +28,7 @@
     min-height: var(--top-row-height);
     grid-row: 1;
     grid-column: 1 / -1;
-    /* z-index: -5; */
+    z-index: -5;
     background: white;
 }
 
@@ -44,7 +44,9 @@
 
 .header-logo {
     text-decoration: none;
+    font-size: var(--logo-size);
     color: var(--logo-color);
+    font-weight: var(--logo-weight);
 }
 
 .header-logo:focus {

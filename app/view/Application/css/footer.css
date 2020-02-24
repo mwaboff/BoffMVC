@@ -3,8 +3,8 @@
 }
 
 .footer-info-container {
+    align-self: flex-bottom;
     padding: 10px 0px;
-    bottom: 0px;
     background-color: var(--accent-color);
     color: white;
     width: 100%;
@@ -28,7 +28,7 @@
     color: var(--secondary-color);
 }
 
-.footer-github:hover {
+.footer-link:hover {
     color: var(--primary-color);
     transition: var(--transition-speed);
 }
