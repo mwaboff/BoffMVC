@@ -76,7 +76,7 @@ class RecipeController extends ApplicationController {
         if (static::isValidRecipeIdRequest() && isset($_REQUEST["action"]) && $_REQUEST["action"] == "edit") {
             if (static::isCreateRequest()) {
                 static::processUpdate();
-                // header("Location: ?page=recipe&id=" . $_REQUEST["id"]);
+                header("Location: ?page=recipe&id=" . $_REQUEST["id"]);
             }
         }
     }
@@ -95,11 +95,6 @@ class RecipeController extends ApplicationController {
             if (isset($_FILES["recipe-picture"])) {
                 $image_id = ImageManager::registerNewImage($_FILES["recipe-picture"]);
                 $recipe->setImageId($image_id);
-                print("<br>image_id = $image_id<br>");
-                echo "<br>---</br>";
-                echo $recipe->getId();
-                echo "<br>";
-                echo "$recipe->get"
             }
 
             $recipe->commit();
