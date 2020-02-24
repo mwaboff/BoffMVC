@@ -19,6 +19,7 @@
     height: 100%;
     font-size: var(--footer-font-size);
     justify-content: center;
+    text-align: center;
     align-items: center;
 }
 
@@ -31,4 +32,32 @@
 .footer-link:hover {
     color: var(--primary-color);
     transition: var(--transition-speed);
+}
+
+@media screen and (max-width: 1060px) {
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .content {
+        padding: 30px 5px;
+    }
+
+    .footer-author-section {
+        flex-direction: column;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .footer-info-container {
+    }
+
+    
+}
+
+@media screen and (max-width: 320px) {
+    :root {
+    }
 }
