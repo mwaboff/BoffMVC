@@ -27,7 +27,7 @@ if (isset($_SESSION["id"])) {
 $recipe_list = $user->getMyRecipes();
 $RENDER_VARS["my_recipes"] = RecipeView::getRecipeDescriptions($recipe_list);
 
-$RENDER_VARS["css"] = ["app/view/Application/css/recipe-tiles.css"];
+$RENDER_VARS["css"] = ["app/view/User/css/user.css", "app/view/Application/css/recipe-tiles.css"];
 require("app/template/user.phtml");
 
 ?>

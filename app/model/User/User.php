@@ -83,7 +83,7 @@ class User {
         return [
             "username" => $this->user,
             "email" => $this->email,
-            "create_date" => $this->create_date
+            "join_date" => $this->create_date,
         ];
     }
 
