@@ -48,7 +48,7 @@ class RecipeController extends ApplicationController {
             $instructions = $_POST["recipe-instructions"];
             $image_id = null;
 
-            if (isset($_FILES["recipe-picture"])) {
+            if (isset($_FILES["recipe-picture"]) && $_FILES["recipe-picture"]["error"] = 0) {
                 $image_id = ImageManager::registerNewImage($_FILES["recipe-picture"]);
             }
 
@@ -92,7 +92,8 @@ class RecipeController extends ApplicationController {
             $recipe->setDescription($_POST["recipe-description"]);
             $recipe->setIngredients($_POST["recipe-ingredients"]);
             $recipe->setInstructions($_POST["recipe-instructions"]);
-            if (isset($_FILES["recipe-picture"])) {
+            if (isset($_FILES["recipe-picture"]) && $_FILES["recipe-picture"]["error"] = 0) {
+                print_r($_FILES);
                 $image_id = ImageManager::registerNewImage($_FILES["recipe-picture"]);
                 $recipe->setImageId($image_id);
             }
