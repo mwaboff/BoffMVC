@@ -33,10 +33,10 @@ class RecipeManager {
             $ingredients, $instructions, $id);
     }
 
-    static function registerNewRecipe($name, $description, $ingredients, $instructions) {
+    static function registerNewRecipe($name, $description, $ingredients, $instructions, $image_id) {
         $result = [];
         $author_id = $_SESSION["id"];
-        $new_recipe = Recipe::createNewRecipe($name, $author_id, $description, $ingredients, $instructions);
+        $new_recipe = Recipe::createNewRecipe($name, $author_id, $description, $ingredients, $instructions, $image_id);
         if($new_recipe) {
             $new_recipe->commit();
             $result = [

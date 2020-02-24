@@ -1,9 +1,9 @@
 <?php
 
 require_once("app/db/DBManager.php");
-require_once("Image.php");
+require_once("app/model/Media/Image.php");
 
-class MediaManager {
+class ImageManager {
 
     static function isValidImageId($image_id) {
         return isPositiveInteger($image_id) && !empty(static::getImageById($image_id));
@@ -11,7 +11,7 @@ class MediaManager {
 
     static function getImageById($id) {
         $result = null;
-        $sql = "SELECT * FROM images WHERE id = :value";
+        $sql = "SELECT * FROM images WHERE id = :id";
         $query_result = DBManager::singleQuery($sql, ["id" => $id]);
         $result_array = $query_result["results"];
         if(!empty($result_array)) {
@@ -22,8 +22,18 @@ class MediaManager {
 
     static function createSingleImageFromQuery($result) {
         $image_string = $result["image_data"];
+        $id = $result["id"];
+        return Image::createFromString($image_string, $id);
+    }
 
-        return new Picture.createFromString($image_string);
+    static function registerNewImage($uploaded_file_info) {
+        $result = null;
+        $new_image = Image::createFromUpload($uploaded_file_info);
+        if ($new_image) {
+            $new_image->commit();
+            $result = $new_image->getId();
+        }
+        return $result;
     }
 
 }

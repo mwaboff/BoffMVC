@@ -1,80 +1,46 @@
 <?php
-// echo "<pre>";
-require_once("app/db/DBManager.php");
-require_once("app/model/Media/ImageManager.php");
+
+require_once("ImageManager.php");
 
 class Image {
 
-    function __construct($image_resource, $id=null) {
+    function __construct($image_resource) {
         $this->ALLOWED_PICTURE_TYPES = ["image/png", "image/jpg", "image/jpeg"];
         $this->ALLOWED_MAX_PICTURE_WIDTH = 10000; // px
         $this->ALLOWED_MAX_PICTURE_HEIGHT = 10000; // px
         $this->ALLOWED_MAX_PICTURE_SIZE = 2000000; // MB
 
-        $this->id = $id;
-        $this->resource = $image_resource;
-        $this->width = imagesx($this->resource);
-        $this->height = imagesy($this->resource);
+        $this->file = $image_resource;
+        // $this->name = $this->getComponent("name");
+        $this->tmp_name = $this->getComponent("tmp_name");
+        // $this->type = $this->getComponent("type");
+        // $this->size = $this->getComponent("size");
+        // $this->error = $this->getComponent("error");
+        // $this->width = 0;
+        // $this->height = 0;
+
+        // if ($this->isLikelyValid()) {
+        //     $image_info = getimagesize($this->tmp_name);
+        //     $this->width = $image_info[0];
+        //     $this->height = $image_info[1];
+        // }
     }
 
-    static function createFromString($data_string, $id=null) {
-        $resource = imagecreatefromstring($data_string);
-        return new Image($resource, $id);
+    static function createFromString($data_string) {
+
     }
 
     static function createFromUpload($file_info) {
         $result = null;
-
         if (isset($file_info["tmp_name"])) {
             $tmp_name = $file_info["tmp_name"];
-            $image_stream_string = file_get_contents($tmp_name);
-            $result = static::createFromString($image_stream_string);
+            $image_file = addslashes(file_get_contents($tmp_name));
+            $result = new Image($image_file);
         }
 
         return $result;
+        
     }
-
-    function getResource() {
-        return $this->resource;
-    }
-
-    function getScaledResource($new_width, $new_height) {
-        return imagescale($this->resource, $new_width, $new_height);
-    }
-
-    function getImageResourceScaled($percentage) {
-        $new_width = $this->width * $percentage;
-        return imagescale($this->resource, $new_width);
-    }
-
-    function commit() {
-        $sql = DBManager::readSqlFile("app/db/sql/insert-image.sql");
-        $parameters = [
-            "image_data" => $this->getImageBinaryString(),
-            // "image_data" => "test"
-        ];
-
-        $result = DBManager::singleQuery($sql, $parameters);
-        $this->id = $result["lastInsertId"];
-
-        print_r($result);
-        print("<br>$this->width");
-        return true;
-    }
-
-    function getImageBinaryString() {
-        ob_start();
-        imagepng($this->resource);
-        $string_data = ob_get_contents();
-        ob_end_clean();
-        // echo $string_data;
-        return $string_data;
-    }
-
-    function getId() {
-        return $this->id;
-    }
-
 
 
 

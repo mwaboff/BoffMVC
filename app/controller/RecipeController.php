@@ -3,6 +3,7 @@
 require_once("app/model/Recipe/Recipe.php");
 require_once("app/model/Recipe/RecipeManager.php");
 require_once("app/model/Media/Image.php");
+require_once("app/model/Media/ImageManager.php");
 
 class RecipeController extends ApplicationController {
 
@@ -42,16 +43,22 @@ class RecipeController extends ApplicationController {
     static function create() {
         if (static::isCreateRequest()) {
             // print("<pre>");
-            print_r($_FILES);
-            $pic = new Image($_FILES["recipe-picture"]);
-            print("<br>" . $pic->testValidity());
+            // print_r($_FILES);
+            // $pic = new Image($_FILES["recipe-picture"]);
+            // print("<br>" . $pic->testValidity());
 
-            // $name = $_POST["recipe-name"];
-            // $desc = $_POST["recipe-description"];
-            // $ingredients = $_POST["recipe-ingredients"];
-            // $instructions = $_POST["recipe-instructions"];
-            // $recipe_info = RecipeManager::registerNewRecipe($name, $desc, $ingredients, $instructions);
-            // static::processNewRecipeResponse($recipe_info);
+            $name = $_POST["recipe-name"];
+            $desc = $_POST["recipe-description"];
+            $ingredients = $_POST["recipe-ingredients"];
+            $instructions = $_POST["recipe-instructions"];
+            $image_id = null;
+            if (isset($_FILES["recipe-picture"])) {
+                $image_id = ImageManager::registerNewImage($_FILES["recipe-picture"]);
+                print("IMAGE ID = " . $image_id);
+            }
+
+            $recipe_info = RecipeManager::registerNewRecipe($name, $desc, $ingredients, $instructions, $image_id);
+            static::processNewRecipeResponse($recipe_info);
         }
     }
 
@@ -62,9 +69,11 @@ class RecipeController extends ApplicationController {
             isset($_POST["recipe-instructions"]); 
     }
 
+
+
     static function processNewRecipeResponse($recipe_info) {
         if (!empty($recipe_info)) {
-            header("Location: ?page=recipe&id=" . $recipe_info["id"]);
+            // header("Location: ?page=recipe&id=" . $recipe_info["id"]);
         }
     }
     
@@ -87,6 +96,12 @@ class RecipeController extends ApplicationController {
             $recipe->setDescription($_POST["recipe-description"]);
             $recipe->setIngredients($_POST["recipe-ingredients"]);
             $recipe->setInstructions($_POST["recipe-instructions"]);
+
+            if (isset($_FILES["recipe-picture"])) {
+                $image_id = ImageManager::registerNewImage($_FILES["recipe-picture"]);
+                $recipe->setImageId($image_id);
+            }
+
             $recipe->commit();
         } else {
             print("You are not a valid editor for this page.");
