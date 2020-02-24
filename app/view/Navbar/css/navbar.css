@@ -6,7 +6,7 @@
     --navbar-background: var(--secondary-color);
     --logo-color: var(--primary-color);
 
-    --navbar-menu-font-size: 10pt;
+    --navbar-menu-font-size: 11pt;
 }
 
 .navbar {
@@ -25,10 +25,10 @@
 
 .navbar-default-background {
     width: 100%;
-    max-height: var(--top-row-height);
+    min-height: var(--top-row-height);
     grid-row: 1;
     grid-column: 1 / -1;
-    z-index: -5;
+    /* z-index: -5; */
     background: white;
 }
 

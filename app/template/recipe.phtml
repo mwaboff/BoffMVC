@@ -1,5 +1,5 @@
-<?php include("header.phtml") ?>
-<?php include("navbar.phtml") ?>
+<?php include("core/header.phtml") ?>
+<?php include("navbar/navbar.phtml") ?>
 <div class="content">
 <div class="title-section">
     <div class="recipe-title"><?= isset($RENDER_VARS["recipe_name"]) ? $RENDER_VARS["recipe_name"] : ""; ?></div>
@@ -20,4 +20,4 @@
 <?php include("recipe-edit-menu.phtml") ?>
 
 </div>
-<?php include("footer.phtml") ?>
+<?php include("core/footer.phtml") ?>

@@ -1,5 +1,6 @@
 @import "global-theme.css";
 @import "components.css";
+@import "footer.css";
 
 * {
     margin: 0;
@@ -19,16 +20,18 @@ body {
     width: 100%;
     height: 100%;
 
-    display: grid;
-    grid-template-columns: auto var(--content-width) auto;
-    grid-template-rows: var(--top-row-height) auto auto ;
+    display: flex;
+    flex-direction: column;
+    /* grid-template-columns: auto var(--content-width) auto;
+    grid-template-rows: var(--top-row-height) 1fr var(--bottom-row-height) ; */
 }
 
 .content {
     
-    grid-column: 2 / 3;
-    grid-row: 2;
-    width: 100%;
+    /* grid-column: 2 / 3;
+    grid-row: 2; */
+    /* height: 100%; */
+    width: var(--content-width);
     margin: 0 auto;
     background: white;
     padding: 30px 0px;

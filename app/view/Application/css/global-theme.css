@@ -8,6 +8,7 @@
     --text-color: var(--accent-color);
 
     --top-row-height: 40px;
+    --bottom-row-height: 100px;
     --content-width: 960px;
 
     --border-radius: 4px;
