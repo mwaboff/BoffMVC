@@ -4,6 +4,7 @@
 <div class="page-title">Build a Recipe</div>
 
 <form class="boff-bakery-form" action="?page=recipe&action=create" method="POST" enctype="multipart/form-data">
+
     <?php require("forms/csrf.phtml") ?>
     <?php require("forms/create.phtml") ?>
 
@@ -13,7 +14,7 @@
     </div>
 
     <div class="form-section">
-        <label class="form-label" for="recipe-picture">Picture</label><br>
+        <label class="form-label" for="recipe-picture">Picture (.png only)</label><br>
         <input type="file" name="recipe-picture" class="recipe-picture" id="fileToUpload" data-required="false">
     </div>
 

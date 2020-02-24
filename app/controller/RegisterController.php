@@ -38,11 +38,6 @@ class RegisterController extends ApplicationController {
         header("Location: ?page=user&uid=" . $user_info["id"]);
     }
 
-
-    static function post() {}
-    static function destroy() {}
-    static function update() {}
-
 }
 
 RegisterController::manageRequest();

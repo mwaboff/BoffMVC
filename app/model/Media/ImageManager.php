@@ -32,6 +32,7 @@ class ImageManager {
         if ($new_image) {
             $new_image->commit();
             $result = $new_image->getId();
+            print($new_image);
         }
         return $result;
     }

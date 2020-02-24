@@ -18,11 +18,6 @@ class UserController extends ApplicationController {
         }
     }
 
-    static function post() {}
-    static function create() {}
-    static function destroy() {}
-
-
     static function update() {
         if (static::isValidUserEditRequest()) {
             static::processUpdate();
@@ -61,20 +56,6 @@ class UserController extends ApplicationController {
         }
         $user->commit();
     }
-
-    // if (!static::isValidRecipeIdRequest()) {
-    //     header("Location: ?page=home");
-    // }
-    // $recipe = RecipeManager::getRecipeById($_REQUEST["id"]);
-    // if (RecipeManager::isValidRecipeEditor($recipe, $_SESSION["id"])) {
-    //     $recipe->setName($_POST["recipe-name"]);
-    //     $recipe->setDescription($_POST["recipe-description"]);
-    //     $recipe->setIngredients($_POST["recipe-ingredients"]);
-    //     $recipe->setInstructions($_POST["recipe-instructions"]);
-    //     $recipe->commit();
-    // } else {
-    //     print("You are not a valid editor for this page.");
-    // }
 
 }
 

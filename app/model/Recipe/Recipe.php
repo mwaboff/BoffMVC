@@ -37,7 +37,8 @@ class Recipe {
             "author_id" => $this->author_id,
             "description" => $this->description,
             "ingredients" => $this->ingredients,
-            "instructions" => $this->instructions
+            "instructions" => $this->instructions,
+            "image_id" => $this->image_id
         ];
 
         $result = DBManager::singleQuery($sql, $parameters);
@@ -53,7 +54,8 @@ class Recipe {
             "author_id" => $this->author_id,
             "description" => $this->description,
             "ingredients" => $this->ingredients,
-            "instructions" => $this->instructions
+            "instructions" => $this->instructions,
+            "image_id" => $this->image_id
         ];
 
         $result = DBManager::singleQuery($sql, $parameters);

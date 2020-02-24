@@ -1,10 +1,14 @@
-.recipe-tile-container {
-    /* display: flex; */
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: left;
-    margin: 20px 0;
+:root {
+    --tile-height: 100px;
 
+    --image-height: var(--tile-height);
+    --image-width: var(--tile-height);
+}
+
+
+.recipe-tile-container {
+    width: 100%;
+    margin: 20px 0;
 }
 
 .recipe-tile-link {
@@ -14,13 +18,12 @@
 
 .recipe-tile {
     background: var(--secondary-color);
-    padding: 20px 15px;
     color: var(--accent-color);
     min-width: 100%;
-    height: 100px;
+    height: var(--tile-height);
     display: flex;
-    flex-direction: column;
-    align-items: baseline;
+    flex-direction: row;
+    margin: 1px 0px;
 }
 
 .recipe-tile:hover {
@@ -31,12 +34,30 @@
 .recipe-tile:hover .recipe-tile-title {
     color: white;
     transition: var(--transition-speed);
+}
 
+.recipe-tile-image-container {
+    height: var(--image-height);
+    width: var(--image-width);
+}
+.recipe-tile-image {
+    height: 100%;
+    width: 100%;
+    /* height: 150px;
+    width: 150px; */
 }
 
 .recipe-tile:hover .recipe-tile-description {
     color: white;
     transition: var(--transition-speed);
+}
+
+.recipe-tile-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: baseline;
+
 }
 
 .recipe-tile-title {

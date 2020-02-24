@@ -14,11 +14,6 @@ class LoginController extends ApplicationController {
         header("Location: index.php?page=home");
     }
 
-    static function post() {}
-    static function create() {}
-    static function destroy() {}
-    static function update() {}
-
 }
 
 LoginController::manageRequest();

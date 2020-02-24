@@ -7,7 +7,6 @@ class ImageController extends ApplicationController {
 
     static function show() {
         global $RENDER_VARS;
-        // require("app/view/Media/ImageTest.php");
         if(!isset($_GET["id"]) || !ImageManager::isValidImageId($_GET["id"])) {
             require(CONFIG["404_page"]);
         } else {
@@ -19,11 +18,6 @@ class ImageController extends ApplicationController {
         session_destroy();
         header("Location: index.php?page=home");
     }
-
-    static function post() {}
-    static function create() {}
-    static function destroy() {}
-    static function update() {}
 
 }
 

@@ -3,16 +3,18 @@
 <div class="content">
 <div class="page-title">Edit Recipe</div>
 
-<form class="boff-bakery-form" action="?page=recipe&action=edit&id=<?= $RENDER_VARS["id"] ?>" method="POST">
+<form class="boff-bakery-form" action="?page=recipe&action=edit&id=<?= $RENDER_VARS["id"] ?>" method="POST" enctype="multipart/form-data">
+
     <?php require("forms/csrf.phtml") ?>
     <?php require("forms/put.phtml") ?>
+
     <div class="form-section">
         <label class="form-label" for="recipe-name">Recipe Title *</label>
         <input type="text" name="recipe-name" class="form-input" id="recipe-name-field" autofocus value="<?= isset($RENDER_VARS["old-recipe-name"]) ? $RENDER_VARS["old-recipe-name"] : "" ?>">
     </div>
 
     <div class="form-section">
-        <label class="form-label" for="recipe-picture">Picture</label><br>
+        <label class="form-label" for="recipe-picture">Picture (.png only)</label><br>
         <input type="file" name="recipe-picture" class="recipe-picture" id="fileToUpload" data-required="false">
     </div>
 

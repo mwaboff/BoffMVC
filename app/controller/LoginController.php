@@ -38,11 +38,6 @@ class LoginController extends ApplicationController {
         $RENDER_VARS["err_msg"] = "failure";
     }
 
-
-    static function create() {}
-    static function destroy() {}
-    static function update() {}
-
 }
 
 LoginController::manageRequest();

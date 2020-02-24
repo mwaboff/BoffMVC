@@ -23,6 +23,7 @@ class RecipeManager {
 
     static function createSingleRecipeFromQuery($result) {
         $id = $result["id"];
+        $image_id = $result["image_id"];
         $recipe_name = $result["recipe_name"];
         $author_id = $result["author_id"];
         $description = $result["description"];
@@ -30,7 +31,7 @@ class RecipeManager {
         $instructions = $result["instructions"];
 
         return new Recipe($recipe_name, $author_id, $description, 
-            $ingredients, $instructions, $id);
+            $ingredients, $instructions, $image_id, $id);
     }
 
     static function registerNewRecipe($name, $description, $ingredients, $instructions, $image_id) {

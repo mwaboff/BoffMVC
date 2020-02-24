@@ -7,11 +7,6 @@ class HomeController extends ApplicationController {
         require("app/view/Home/Home.php");
     }
 
-    static function create() {}
-    static function destroy() {}
-    static function update() {}
-    static function post() {}
-
 }
 
 HomeController::manageRequest();
