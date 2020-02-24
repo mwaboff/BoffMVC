@@ -34,7 +34,36 @@
 .recipe-section {
     padding: 25px 0px;
 }
+
 .recipe-section-title {
     font-weight: bold;
     font-size: 12pt;
+}
+
+@media screen and (max-width: 1060px) {
+    
+}
+
+
+@media screen and (max-width: 768px) {
+    .title-section {
+        font-size: 25pt;
+    }
+    
+    .recipe-description-section {
+        flex-direction: column
+    }
+
+    .author-link {
+        padding: 0px;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+
+}
+
+@media screen and (max-width: 320px) {
+    
 }
