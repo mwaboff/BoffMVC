@@ -21,7 +21,7 @@ class RecipeController extends ApplicationController {
         } elseif (isset($_GET["action"]) && $_GET["action"] == "create") {
             require("app/view/Recipe/RecipeCreate.php");
         }  else {
-            require(CONFIG["404_page"]);
+            static::renderNotFound();
         }
     }
 
@@ -37,7 +37,6 @@ class RecipeController extends ApplicationController {
         } else {
             print("You are not a valid editor for this page.");
         }
-        
     }
 
     static function create() {

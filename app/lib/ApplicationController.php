@@ -4,19 +4,19 @@ $RENDER_VARS = [];
 
 class ApplicationController {
     static function create() {
-        require_once(CONFIG["550_page"]);
+        static::renderMethodNotAllowed();
     }
     static function show() {
-        require_once(CONFIG["550_page"]);
+        static::renderMethodNotAllowed();
     }
     static function post() {
-        require_once(CONFIG["550_page"]);
+        static::renderMethodNotAllowed();
     }
     static function update() {
-        require_once(CONFIG["550_page"]);
+        static::renderMethodNotAllowed();
     }
     static function destroy() {
-        require_once(CONFIG["550_page"]);
+        static::renderMethodNotAllowed();
     }
 
     function manageRequest() {
@@ -47,6 +47,30 @@ class ApplicationController {
                 static::post();
                 break;
         }
+    }
+
+    static function renderNotFound() {
+        require_once(CONFIG["404_page"]);
+    }
+
+    static function renderUnauthorized() {
+        require_once(CONFIG["401_page"]);
+    }
+
+    static function renderForbidden() {
+        require_once(CONFIG["403_page"]);
+    }
+
+    static function renderNotAcceptable() {
+        require_once(CONFIG["406_page"]);
+    }
+
+    static function renderMethodNotAllowed() {
+        require_once(CONFIG["405_page"]);
+    }
+
+    static function renderNotImplemented() {
+        require_once(CONFIG["501_page"]);
     }
 
 }

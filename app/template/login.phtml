@@ -1,5 +1,6 @@
 <?php include("core/header.phtml") ?>
 <?php include("navbar/navbar.phtml") ?>
+
 <div class="login-outer-wrapper">
 <div class="login-container">
 
@@ -10,7 +11,9 @@
     <div class="login-body">
         <form class="boff-bakery-form" id="login-form" method="POST" action="?page=login">
             
-            <div id="login-error"><?= isset($RENDER_VARS["err_msg"]) ? $RENDER_VARS["err_msg"] : ""; ?></div>
+            <div id="login-error">
+                <?= isset($RENDER_VARS["err_msg"]) ? $RENDER_VARS["err_msg"] : ""; ?>
+            </div>
             
             <?php require("forms/csrf.phtml") ?>
             <?php require("forms/post.phtml") ?>

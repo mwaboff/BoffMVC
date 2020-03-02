@@ -2,11 +2,11 @@
 
 class Router {
     static function route() {
-        if (Router::isCSRFValid()) {
-            $page = Router::getRequestVar("page", "home");
-            Router::loadController($page);
+        if (static::isCSRFValid()) {
+            $page = static::getRequestVar("page", "home");
+            static::loadController($page);
         } else {
-            require(CONFIG["550_page"]);
+            ApplicationController::renderNotAcceptable();
         }
     }
 
@@ -30,7 +30,7 @@ class Router {
         if(file_exists($controller_path)) {
             require($controller_path);
         } else {
-            require(CONFIG["404_page"]);
+            ApplicationController::renderNotFound();
         }
     }
 

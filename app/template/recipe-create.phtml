@@ -10,22 +10,40 @@
 
     <div class="form-section">
         <label class="form-label" for="recipe-name">Recipe Title *</label>
-        <input type="text" name="recipe-name" class="form-input" id="recipe-name-field" autofocus value="<?= isset($RENDER_VARS["old-recipe-name"]) ? $RENDER_VARS["old-recipe-name"] : "" ?>">
+        <input type="text" 
+            name="recipe-name" 
+            class="form-input" 
+            id="recipe-name-field" 
+            value="<?= isset($RENDER_VARS["old-recipe-name"]) ? $RENDER_VARS["old-recipe-name"] : "" ?>"
+            autofocus>
     </div>
 
     <div class="form-section">
-        <label class="form-label" for="recipe-picture">Picture (.png only)</label><br>
-        <input type="file" name="recipe-picture" class="recipe-picture" id="fileToUpload" data-required="false">
+        <label class="form-label" for="recipe-picture">Picture (.png only, 500MB max)</label><br>
+        <input type="file" 
+            name="recipe-picture" 
+            class="recipe-picture" 
+            id="fileToUpload" 
+            data-required="false">
     </div>
 
     <div class="form-section">
         <label class="form-label" for="recipe-description">Description *</label>
-        <input type="text" name="recipe-description" class="form-input smaller-input-text" id="recipe-description-field" value="<?= isset($RENDER_VARS["old-recipe-description"]) ? $RENDER_VARS["old-recipe-description"] : "" ?>">
+        <input type="text" 
+            name="recipe-description" 
+            class="form-input smaller-input-text" 
+            id="recipe-description-field" 
+            value="<?= isset($RENDER_VARS["old-recipe-description"]) ? $RENDER_VARS["old-recipe-description"] : "" ?>">
     </div>
 
     <div class="form-section">
         <label class="form-label" for="recipe-ingredients">Ingredients *</label>
-        <textarea type="textarea" name="recipe-ingredients" class="form-input large-input smaller-input-text" id="recipe-ingredients-field" /><?= isset($RENDER_VARS["old-recipe-ingredients"]) ? $RENDER_VARS["old-recipe-ingredients"] : "" ?></textarea>
+        <textarea type="textarea" 
+            name="recipe-ingredients" 
+            class="form-input large-input smaller-input-text" 
+            id="recipe-ingredients-field" />
+                <?= isset($RENDER_VARS["old-recipe-ingredients"]) ? $RENDER_VARS["old-recipe-ingredients"] : "" ?>
+            </textarea>
     </div>
 
     <div class="form-section">

@@ -18,4 +18,9 @@ function isPositiveInteger($int_string) {
     return ((int)$int_string && $int_string > 0) ? true : false;
 }
 
+function getRenderVar($variable, $default) {
+    global $RENDER_VARS;
+    return isset($RENDER_VARS[$variable]) ? $RENDER_VARS[$variable] : $default;
+}
+
 ?>

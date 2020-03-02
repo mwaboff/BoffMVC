@@ -8,7 +8,7 @@ class ImageController extends ApplicationController {
     static function show() {
         global $RENDER_VARS;
         if(!isset($_GET["id"]) || !ImageManager::isValidImageId($_GET["id"])) {
-            require(CONFIG["404_page"]);
+            static::renderNotFound();
         } else {
             require("app/view/Media/Image.php");
         }

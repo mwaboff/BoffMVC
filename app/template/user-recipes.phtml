@@ -1,6 +1,6 @@
 <div class="recipe-container" id="my-recipes-list">
     <div class="my-recipe-username">
-        <?= isset($RENDER_VARS["username"]) ? $RENDER_VARS["username"] : "" ?>'s Recipes
+        <?= getRenderVar("username", "Undefined"); ?>'s Recipes
     </div>
 
     <?php 

@@ -6,11 +6,6 @@ require_once("app/model/Media/ImageManager.php");
 class Image {
 
     function __construct($image_resource, $id=null) {
-        // $this->ALLOWED_PICTURE_TYPES = ["image/png", "image/jpg", "image/jpeg"];
-        // $this->ALLOWED_MAX_PICTURE_WIDTH = 10000; // px
-        // $this->ALLOWED_MAX_PICTURE_HEIGHT = 10000; // px
-        // $this->ALLOWED_MAX_PICTURE_SIZE = 2000000; // MB
-
         $this->id = $id;
         $this->resource = $image_resource;
         $this->width = imagesx($this->resource);

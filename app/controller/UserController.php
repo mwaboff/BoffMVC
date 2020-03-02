@@ -14,7 +14,7 @@ class UserController extends ApplicationController {
                 require("app/view/User/User.php");
             }
         } else {
-            require(CONFIG["404_page"]);
+            static::renderNotFound();
         }
     }
 

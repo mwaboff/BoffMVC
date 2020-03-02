@@ -9,7 +9,11 @@ const CONFIG = [
     "database_name" => "boffbakery",
     
     "404_page" => "app/view/Errors/404.php",
-    "550_page" => "app/view/Errors/550.php"
+    "403_page" => "app/view/Errors/403.php",
+    "406_page" => "app/view/Errors/406.php",
+    "401_page" => "app/view/Errors/401.php",
+    "405_page" => "app/view/Errors/405.php",
+    "501_page" => "app/view/Errors/501.php",
 ];
 
 ?>
