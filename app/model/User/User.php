@@ -1,7 +1,6 @@
 <?php
 
 require_once("UserManager.php");
-require_once("app/model/Recipe/RecipeManager.php");
 
 
 class User {
@@ -111,9 +110,6 @@ class User {
         $this->pass = password_hash($new_password, PASSWORD_BCRYPT);
     }
 
-    function getMyRecipes() {
-        return RecipeManager::getAllRecipesForAuthor($this->id);
-    }
 }
 
 ?>
