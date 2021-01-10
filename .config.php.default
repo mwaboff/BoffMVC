@@ -1,13 +1,15 @@
 <?php
 
 const CONFIG = [
+    // Database Configuration
     "database_type" => "mysql",
     "database_host" => "localhost",
     "database_port" => "3306",
-    "database_username" => "root",
+    "database_username" => "",
     "database_password" => "",
     "database_name" => "",
     
+    // Error Pages
     "404_page" => "app/view/Errors/404.php",
     "550_page" => "app/view/Errors/550.php"
 ];
