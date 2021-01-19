@@ -41,6 +41,7 @@ Essentially, if a function requires interaction with multiple model objects or i
 **Controllers**: `app/controller`
 * Please note that Controllers should extend `ApplicationController` and run `manageRequest()` after the class definition.
 * Controllers should match the naming format `PageController` where `Page` is what you expect to see in the URL. For example, `example.com/?page=user` would map to `UserController`.
+* Note that if a controller does not exist, the router will default to the `HomeController`.
 **Models**: `app/model`
 * Note what I mentioned earlier regarding the split between Models and Model Managers.
 * The naming convention should meet this pattern: `User` and `UserManager`.
@@ -53,14 +54,3 @@ Essentially, if a function requires interaction with multiple model objects or i
 * Views should then require a template `.phtml` page located in `app/template`
 
 Built into this framework has a basic website with basic user authentication built into it to use as an example. Another example project can by [this recipe sharing website](https://github.com/mwaboff/BoffRecipes) that can be used as well for an example.
-
-
-
-
-
-By default, if no controller exists for a given page, the router will direct all requests to the HomeController which will immediately render the Home view. 
-
-
-
-
-Models are located in `app/model`. 
